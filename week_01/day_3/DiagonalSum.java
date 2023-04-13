@@ -4,29 +4,43 @@ Example : Input  : [[1 3  4]
                                   [9 2 10]]                          
                                          Output :  27*/
 
-class DiagonalSum
+
+
+class Diag
 {
 	public static void main(String[] args)
 	{
 		int[][] array = {{1,3,4},{6,3,2},{9,2,10}};
-		
 		int row = 3;
 		int col = 3;
-		String bag = "";
-		int count = 0;
+		int i = 0;
+		int j =0;
 		
-		for(int i =0;i<row;i++)
+		int sum1 = 0;
+		while(i< row && j< col)
 		{
-			for(int j=0;j<col;j++)
-			{
-				if(i%2==0 && j%2==0 || i%2==1 && j%2==1)
-				{
-					bag += array[i][j]+" ";
-					count+=array[i][j];
-				}
-			}
+			System.out.print(array[i][j] + " ");
+			sum1 +=array[i][j];
+			i++;
+			j++;
 		}
-		System.out.println(bag);
-		System.out.println(count);
+		
+		int sum2 = 0;
+		int s =0;
+		int k =col-1;
+		while(s<row && k >=0)
+		{
+		
+			if(s != k){
+				System.out.print(array[s][k]+" ");
+				sum2 += array[s][k];
+			}
+			s++;
+			k--;
+		}
+		
+		int result = sum1 + sum2;
+		System.out.print(result);
+		
 	}
 }
