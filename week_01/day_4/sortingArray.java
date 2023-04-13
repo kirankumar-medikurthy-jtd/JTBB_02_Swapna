@@ -25,9 +25,7 @@ class sortingArray
 		{
 			System.out.print(array[i]+" ");
 		}
-		
-	       
-	       
+		    
 	}
 }
 
