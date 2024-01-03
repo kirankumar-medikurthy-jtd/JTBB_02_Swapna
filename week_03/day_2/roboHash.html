@@ -1,0 +1,28 @@
+<html>
+<head>
+	<title>robo hash</title>
+	<link rel = "stylesheet" href = "roboHash.css"/>
+</head>
+<body>
+	<h1> Find your Robo Hash</h1>
+	<div id = "container">
+		<input type = "text" placeholder = "Enter Name" id = "input"></input>
+		<button onClick = "search()">Display</button>
+		<div id = "main">
+			<h2>This is Your Robohash <img scr = "https://media.istockphoto.com/id/528415533/vector/emoticon-with-tears-of-joy.jpg?s=612x612&w=is&k=20&c=34lI1G0QJdRC5xktx1jqol8RYYNJJ0ysEtTq4NF9h6s=" style = "width : "/></h2>
+			<img class="imgTag" alt=""/>
+		</div>
+	</div>
+
+</body>
+<script>
+	async function search () {
+	
+		let input = document.querySelector("#input").value;
+                let imagetag = document.querySelector(".imgTag");
+                imagetag.src=`https://robohash.org/${input}`;
+            }
+            
+            
+</script>
+</html>

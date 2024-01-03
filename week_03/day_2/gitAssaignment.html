@@ -1,0 +1,100 @@
+<html>
+<head>
+	<title>gitHub</title>
+	<link rel="stylesheet" href = "gitAssaignment.css" />
+</head>
+<body>
+	<div id = "main">
+		<div class = "cont">
+			<a href = "gitHomepage.html" alt= ""><img src = "https://p.kindpng.com/picc/s/128-1280192_github-logo-png-github-png-transparent-png.png" style = "width : 58px ; height= 50px"></img></a>
+			<input type = "text" placeholder = "Enter user name" id = "input"/>
+			<button id = "btn" onclick = "search()"><image src = "https://www.freeiconspng.com/thumbs/search-icon-png/search-icon-png-21.png" style = "width : 25px; height : 25px" /></button>
+			<a href = "" id = "user">Users</a>
+			<a href = "repositories.html" id = "repo">Repositories</a>
+			<a href = "topicSerch.html" id = "topic">Topic</a>
+		</div>
+		<div id = "users"></div>
+	</div>
+</body>
+<script>
+	let userData;
+	let user = document.querySelector("#users");
+	
+	
+	async function fetchData(url)
+	{
+		const response = await fetch(url);
+		const jsonData = await response.json();
+		return jsonData;
+	}
+	
+	
+	async function search()
+	{
+		user.innerText = "loading.....";
+		user.style.color = "white";
+		let input = document.querySelector("#input").value;
+		localStorage.setItem("input",JSON.stringify(input));
+		let response = await fetchData(`https://swapi.dev/api/people`)
+		
+		console.log(response);
+		userData = response["items"];
+		localStorage.setItem("gitUsers",JSON.stringify(userData));
+		user.innerText = " ";
+		if(userData != 0)
+		{
+			for(let i = 0;i<userData.length-1;i++)
+			{
+				let name = document.createElement("div");
+				name.innerText = "UserName :- "+userData[i].login;
+				name.setAttribute("id","name");
+				
+				let id = document.createElement("div");
+				id.innerText = "Id" + userData[i].node_id;
+				id.setAttribute("id","name");
+				
+				
+				let imgdiv = document.createElement("img");
+				imgdiv.setAttribute("src",userData[i].avatar_url);
+				imgdiv.setAttribute("id","img");
+				let div = document.createElement("div");
+				div.append(imgdiv);
+				div.setAttribute("id","image");
+				
+				let admincode = document.createElement("div");
+				admincode.innerText = "Admin :- "+userData[i].site_admin;
+				admincode.setAttribute("id","name");
+				
+				let store = document.createElement("div");
+				store.append(name,id,admincode);
+				store.setAttribute("id","store");
+				
+				let bigstore = document.createElement("div");
+				bigstore.setAttribute("id","big");
+				bigstore.append(div,store);
+				user.append(bigstore);
+				bigstore.setAttribute("onClick", `displayOneUser(${i})`);
+				
+			}
+			
+		}
+		else
+		{
+			alert("there is no such user");	
+		}
+	}
+	
+	
+	function displayOneUser(i)
+	{
+			localStorage.setItem("oneUser",JSON.stringify(userData[i]));
+			window.location.href = "oneUser.html";	
+			
+	}
+		
+	user.innerText = " ";
+	
+	
+			
+</script>
+</html>

@@ -1,0 +1,100 @@
+<html>
+<head>
+	<title>gitHub</title>
+	<link rel="stylesheet" href = "oneUser.css" />
+</head>
+<body>
+	<div id = "main"></div>
+	
+</body>
+<script>
+
+//<a href = "gitAssaignment.html">back</a>
+		
+		let result = JSON.parse(localStorage.getItem("oneUser"));
+		let {login,node_id,avatar_url,site_admin,} = result;
+		
+		let view = document.createElement("div");
+		
+		let name = document.createElement("div");
+		name.innerText = "UserName :- "+login;
+		name.setAttribute("id","name");
+		
+		let id = document.createElement("div");
+		id.innerText = "Id" + node_id;
+		id.setAttribute("id","name");
+		
+		
+		let imgdiv = document.createElement("img");
+		imgdiv.setAttribute("src",avatar_url);
+		imgdiv.setAttribute("id","img");
+		let div = document.createElement("div");
+		div.append(imgdiv);
+		div.setAttribute("id","image");
+		
+		let admincode = document.createElement("div");
+		admincode.innerText = "Admin :- "+site_admin;
+		admincode.setAttribute("id","name");
+		
+		let store = document.createElement("div");
+		store.append(name,id,admincode);
+		store.setAttribute("id","store");
+		view.append(div,store);
+		view.setAttribute("id","view");
+		let main = document.querySelector("#main");
+		main.append(view);
+		
+		
+		
+		
+		let button = document.createElement("button");
+		button.innerText = "back";
+		document.body.append(button);
+		
+		let local = JSON.parse(localStorage.getItem("gitUsers"));
+		console.log(local);
+		/*button.setAttribute("onClick", `Allusers('${local}')`);
+		
+		function Allusers(local)
+		{
+			
+			//window.location.href =  "gitAssaignment.html";
+			
+	               for(let i = 0;i<local.length-1;i++)
+			{
+				let name1 = document.createElement("div");
+				name1.innerText = "UserName :- "+login;
+				name1.setAttribute("id","name");
+				
+				let id1 = document.createElement("div");
+				id1.innerText = "Id" + node_id;
+				id1.setAttribute("id","name");
+				
+				
+				let imgdiv1 = document.createElement("img");
+				imgdiv1.setAttribute("src",avatar_url);
+				imgdiv1.setAttribute("id","img");
+				let div1 = document.createElement("div");
+				div1.append(imgdiv1);
+				div1.setAttribute("id","image");
+				
+				let admincode1 = document.createElement("div");
+				admincode1.innerText = "Admin :- "+site_admin;
+				admincode1.setAttribute("id","name");
+				
+				let store1 = document.createElement("div");
+				store1.append(name1,id1,admincode1);
+				store1.setAttribute("id","store");
+				
+				let bigstore1 = document.createElement("div");
+				bigstore1.setAttribute("id","big");
+				bigstore1.append(div1,store1);
+				document.body.append(bigstore1);
+				
+			}		
+			
+		}*/
+		
+</script>
+</html>
+
